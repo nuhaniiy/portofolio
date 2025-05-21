@@ -30,3 +30,38 @@ $(document).ready(function(){
       	} 
     });
 });
+
+
+    function openPopup(imgElement) {
+        const modal = document.getElementById('imagePopup');
+        const modalImg = document.getElementById('popupImage');
+        const modalTitle = document.getElementById('popupTitle');
+        const modalLink = document.getElementById('popupLink');
+        
+        // Get the parent img-wrapper element
+        const imgWrapper = imgElement.closest('.img-wrapper');
+        
+        // Get the title and link from the overlay
+        const title = imgWrapper.querySelector('h5').textContent;
+        const link = imgWrapper.querySelector('a').href;
+        
+        // Set the modal content
+        modalImg.src = imgElement.src;
+        modalTitle.textContent = title;
+        modalLink.href = link;
+        
+        // Show the modal
+        modal.style.display = "block";
+    }
+    
+    function closePopup() {
+        document.getElementById('imagePopup').style.display = "none";
+    }
+    
+    // Close when clicking outside the modal content
+    window.onclick = function(event) {
+        const modal = document.getElementById('imagePopup');
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
